@@ -52,3 +52,26 @@ pre, code {
 .fa {
     display: none !important;
 }
+
+body{counter-reset: chapter}
+   h1{counter-reset: section}
+   h2{counter-reset: sub-section}
+   h3{counter-reset: composite}
+   h4{counter-reset: detail}
+
+   h1:before{
+     counter-increment: chapter;
+     content: counter(chapter) " ";
+   }
+   h2:before{
+     counter-increment: section;
+     content: counter(chapter) "." counter(section) " ";
+   }
+   h3:before{
+     counter-increment: sub-section;
+     content: counter(chapter) "." counter(section) "." counter(sub-section) " ";
+   }
+
+@media print {
+  h1 {page-break-before: always;}
+}
